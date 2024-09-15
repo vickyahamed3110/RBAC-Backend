@@ -9,7 +9,6 @@ getUserRouter.get("/", async(req, res) => {
 
 getUserRouter.delete("/:email", async(req, res) => {
     const userData = req.params;
-    console.log(userData);
     await db.collection("User").deleteOne({email:userData.email})
     res.send({msg:"Deleted successfully"})
 })

@@ -3,7 +3,6 @@ import connectToDb from "./mongodb-connection.js";
 import cors from "cors";
 import registerRouter from "./apis/Register.js";
 import loginRouter from "./apis/login.js";
-//import forgetPasswordRouter from "./apis/forget.pwd.js";
 import getUserRouter from "./apis/user.js";
 import getAdminRouter from "./apis/admin.js";
 import jwt from "jsonwebtoken";
@@ -23,7 +22,6 @@ try {
 }
 server.use("/register", registerRouter);
 server.use("/login", loginRouter);
-//server.use("/forgetPassword", forgetPasswordRouter);
 server.use("/users", auth_api, getUserRouter);
 server.use("/admin", auth_api, getAdminRouter);
 server.use("/change-form", auth_api, roleRouter);
