@@ -7,6 +7,9 @@ import getUserRouter from "./apis/user.js";
 import getAdminRouter from "./apis/admin.js";
 import jwt from "jsonwebtoken";
 import roleRouter from "./apis/role.js";
+import request from "./apis/request.js";
+import loggedRouter from "./apis/logged-user.js";
+import acceptRouter from "./apis/accept.js";
 const server = express();
 server.use(cors());
 server.use(express.json());
@@ -25,6 +28,9 @@ server.use("/login", loginRouter);
 server.use("/users", auth_api, getUserRouter);
 server.use("/admin", auth_api, getAdminRouter);
 server.use("/change-form", auth_api, roleRouter);
+server.use('/request', auth_api, request);
+server.use('/loguser', loggedRouter);
+server.use('/accept', acceptRouter)
 const port = 8000;
 server.listen(port, () => {
     console.log("our port is running sucessful", port);

@@ -15,7 +15,7 @@ loginRouter.post("/", async (req, res) => {
               res.status(500).send({msg:"something went wrong"});  
             } else {
                 if (result){
-                    const user_details = await db.collection("User").findOne({email:userData.email},{projection:{role:1, _id:0}})
+                    const user_details = await db.collection("User").findOne({email:userData.email},{projection:{_id:0, email:1}})
                     var token = jwt.sign(user_details, process.env.JWT_SECRET );
                     res.send({login:"login Successfully", code:1, role:token});
                 } else {

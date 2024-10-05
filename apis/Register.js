@@ -12,7 +12,7 @@ registerRouter.post ("/", async (req,res) => {
                     res.status(500).send({msg:"something error in your password"});
                 } else {
                     await db.collection("User").insertOne({...userData, password:hash, date:Math.floor(1 + Math.random() * 10),
-                        jobrole:"unassigned", isForm:false, role:'User'
+                        jobrole:"unassigned", isForm:false, role:'User', isAccepted:'requested'
                     })
                     res.send({msg:"User created sucessfully", code:0});
                 }

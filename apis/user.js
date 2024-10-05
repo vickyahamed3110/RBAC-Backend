@@ -3,7 +3,7 @@ import { db } from "../mongodb-connection.js";
 
 const getUserRouter = express.Router()
 getUserRouter.get("/", async(req, res) => {
-    const userobj = await db.collection("User").find({}).toArray()
+    const userobj = await db.collection("User").find({isAccepted:'accepted'}).toArray()
     res.send(userobj)
 })
 
